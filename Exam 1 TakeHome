@@ -1,0 +1,175 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyO0Od/WCQvACHrgn5xISrXD",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/harlee2/Linear-Algebra/blob/main/Exam%201%20TakeHome\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "nD8ppV_anX6j"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "from numpy import c_"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "M = np.matrix([[4/10, 5/10, 2/10, 0],\n",
+        "               [3/10, 0, 4/10, 0],\n",
+        "               [3/10, 0, 4/10, 0],\n",
+        "               [0, 5/10, 0, 1]])"
+      ],
+      "metadata": {
+        "id": "FIJAi3LtnfO-"
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "x0 = np.matrix([[100], [200], [0], [0]])\n",
+        "\n",
+        "M**2 * x0"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GWrjMIhHotw8",
+        "outputId": "b1fc79c7-8eea-4a22-fb93-e2f225b474b8"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "matrix([[ 77.],\n",
+              "        [ 54.],\n",
+              "        [ 54.],\n",
+              "        [115.]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "M**4 * x0"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LPBXXBwOpBi4",
+        "outputId": "90039ed8-8aa2-4a5c-fdd1-652a56e5209d"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "matrix([[ 58.73],\n",
+              "        [ 38.46],\n",
+              "        [ 38.46],\n",
+              "        [164.35]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "M**48 * x0\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7djOXA8BpNxn",
+        "outputId": "d24ac582-4199-4b02-b756-10df8ab1ffa0"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "matrix([[7.04863641e-02],\n",
+              "        [4.61441570e-02],\n",
+              "        [4.61441570e-02],\n",
+              "        [2.99837225e+02]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "x0 = np.matrix([[100], [200], [0], [0]])\n",
+        "\n",
+        "X = np.c_[x0, M*x0, M**2 * x0, M**3 * x0, M**4 * x0, M**5 * x0, M**10 * x0, M**15 * x0]\n",
+        "\n",
+        "print(X.round(2))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GLcj6S17n_Yx",
+        "outputId": "9ce7294d-a070-4bf8-9a9c-3aaae9a50380"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[100.   140.    77.    68.6   58.73  50.41  23.48  10.93]\n",
+            " [200.    30.    54.    44.7   38.46  33.    15.37   7.16]\n",
+            " [  0.    30.    54.    44.7   38.46  33.    15.37   7.16]\n",
+            " [  0.   100.   115.   142.   164.35 183.58 245.79 274.75]]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
